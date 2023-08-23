@@ -1,0 +1,35 @@
+<!--
+    Author: Patrick Celedio
+    Purpose: Navbar feature for UI
+ -->
+
+<div class="banner"> <strong><p>SFSU Software Engineering Project CSC 648-848, Fall 2022, For Demonstration Only</p></strong></div>
+<nav id="nav-bar" class="navbar-container">
+    <div>
+        <a href="/">
+            <div class="Logo">
+                <img src="/public/images/logo/marketgator_small_logo.png" height="50" width="50">
+                <p>MarketGator</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="searchbar-container">
+        {{> searchbar}}
+    </div>
+
+    <div class="nav-item-container">
+        <ul class="navbar">
+            {{#if logged}}
+            <li class="nav-item"><a href="/create-listing">Create Listing</a></li>
+            <li class="nav-item"><a href="/inbox">Inbox</a></li>
+            <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+            <li class="nav-item" id="logout-button" style="cursor: pointer;" >Sign Out</li>
+            {{else}}
+            <li class="nav-item"><a href="/create-listing">Create Listing</a></li>
+            <li class="nav-item"><a href="/registration">Register</a></li>
+            <li class="nav-item"><a href="/login">Sign In</a></li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>

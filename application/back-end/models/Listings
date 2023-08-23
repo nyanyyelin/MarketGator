@@ -1,0 +1,181 @@
+/*
+  Author: Michael Feger
+  Purpose: Model that performs search function and returns list of objects given the search criteria
+  Can also return a single listing upon clicking a listing from search results.
+*/
+
+var db = require('../database.js');
+const mysql = require('mysql2/promise');
+
+const ListingModel = {};
+
+ListingModel.create = async(title, description, photoPath, price, userId, category, thumbnail) => {
+    price=0;
+    const connection = await db.getConnection()
+    //console.log(req.title);
+    let query1 = `INSERT INTO listing VALUES ((SELECT MAX(idlisting)+1 FROM listing list),?,?,?,?,0,now(),?, ?);`;
+    try {
+        //Create an SQL transaction to be sure both queries are inserted, rollback if one fails
+        await connection.beginTransaction()
+        const result1 = await connection.query(query1, [title, price, description, photoPath, userId, thumbnail])
+        if (result1[0].insertId == 0) //Check if query was properly inserted
+            throw new Error('Failed to insert not found');
+        let query2 =
+        `INSERT INTO listingcategories (idlistingcategories, categories_idcategories, listing_idlisting)
+        SELECT (SELECT MAX(idlistingcategories)+1 FROM listingcategories cat), idcategories, ?
+        FROM categories
+        WHERE categories.name=?`
+        const result2 = await connection.query(query2, [result1[0].insertId, category])
+        if (result2[0].insertId == 0)
+            throw new Error('Failed to insert not found');
+    
+        await connection.commit()
+        console.log("finished commit")
+        connection.release()
+        console.log(result1[0])
+        return result1[0]; //Return results of new user listing
+      } 
+      catch (error) {
+        console.log("Rolling Back")
+        await connection.rollback() //Undo all SQL inserts if one fails
+        connection.release()
+        console.error(error)
+    }
+}
+
+ListingModel.search = function (req, res, next) {
+    console.log("STARTING SEARCH")
+    var category = req.query.category;
+    var searchTerm = req.query.search;
+    console.log(category);
+    console.log(searchTerm);
+    if(typeof category == 'undefined')
+        category = '';
+    if(typeof searchTerm == 'undefined')
+        searchTerm = '';
+    console.log(category);
+    console.log(searchTerm);
+    let baseSQL = "SELECT * FROM listing WHERE listing.live=1;"
+
+        /* Both category AND search term  */
+        if (searchTerm != '' && category != ''){
+            baseSQL = 
+             `SELECT DISTINCT listing.idlisting, listing.title, listing.price, listing.description, listing.photopath, listing.live, listing.created, listing.thumbnail
+             FROM listing
+             INNER JOIN listingcategories ON listing.idlisting=listingcategories.listing_idlisting
+             WHERE listing.live=1
+             AND (title LIKE CONCAT('%', ?,  '%') OR description LIKE CONCAT('%', ?,  '%'))
+             AND listingcategories.categories_idcategories IN (SELECT categories.idcategories FROM categories WHERE categories.name=?)`  
+             
+             return db.execute(baseSQL, [searchTerm, searchTerm, category])
+                .then(([results, fields])=>{
+                    
+                    req.searchResult = results;
+                    req.searchTerm = "";
+                    req.category = "";
+
+                    return results;
+                })
+        }
+        /* Search term AND NO category  */
+        else if (searchTerm != '' && category == ''){
+            baseSQL = 
+            `SELECT DISTINCT listing.idlisting, listing.title, listing.price, listing.description, listing.photopath, listing.live, listing.created, listing.thumbnail
+            FROM listing
+            WHERE listing.live=1
+            AND (title LIKE CONCAT('%', ?,  '%') OR description LIKE CONCAT('%', ?,  '%'))`
+
+            return db.execute(baseSQL, [searchTerm, searchTerm])
+                .then(([results, fields])=>{
+                    
+                    req.searchResult = results;
+                    req.searchTerm = "";
+                    req.category = "";
+
+                    return results;
+                })
+        }
+        /* Category AND NO Search term  */
+        else if (searchTerm == '' && category != ''){
+            baseSQL = 
+            `SELECT DISTINCT listing.idlisting, listing.title, listing.price, listing.description, listing.photopath, listing.live, listing.created, listing.thumbnail
+             FROM listing
+             INNER JOIN listingcategories ON listing.idlisting=listingcategories.listing_idlisting WHERE listing.live=1
+             AND listingcategories.categories_idcategories IN (SELECT categories.idcategories FROM categories WHERE categories.name=?)`
+
+             return db.execute(baseSQL, [category])
+                .then(([results, fields])=>{
+                    
+                    req.searchResult = results;
+                    req.searchTerm = "";
+                    req.category = "";
+
+                    return results;
+                })
+        }
+        /* Return all, because no category or search term  */
+        return db.execute(baseSQL)
+        .then(([results, fields])=>{
+            
+            req.searchResult = results;
+            req.searchTerm = "";
+            req.category = "";
+
+            return results;
+        })
+        .catch((err) => Promise.reject(err));
+}
+
+ListingModel.getListing = (idlisting) => {
+    let baseSQL = 
+    `SELECT * FROM listing
+    WHERE idlisting=?`;
+
+
+  return db.execute(baseSQL, [idlisting])
+  .then(([results, fields]) => {
+      return Promise.resolve(results);
+    
+  })
+  .catch(err => Promise.reject(err))
+}
+
+ListingModel.getListingByPoster = (username) => {
+    let baseSQL = 
+    `SELECT * FROM listing WHERE poster = ?`;
+
+  return db.execute(baseSQL, [username])
+  .then(([results, fields]) => {
+      return Promise.resolve(results);
+    
+  })
+  .catch(err => Promise.reject(err))
+}
+
+ListingModel.getMostRecent = function() {
+    let baseSQL = `SELECT * FROM listing WHERE listing.live=1 order by listing.idlisting desc limit 10;`
+    return db.execute(baseSQL)
+        .then(([results, fields]) => {
+            return Promise.resolve(results);
+    
+        })
+  .catch(err => Promise.reject(err))
+}
+
+ListingModel.test = function() {
+
+        let baseSQL = "SELECT * FROM listing WHERE listing.live=1;";
+        return db.execute(baseSQL)
+        
+.then(([results, fields])=>{
+    
+    console.log(results);
+    return results;
+
+})
+.catch((err) => Promise.reject(err));
+}
+
+
+
+module.exports = ListingModel;

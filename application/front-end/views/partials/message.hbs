@@ -1,0 +1,16 @@
+<!--
+    Author: Patrick Celedio
+    Purpose: Show message boxes interface
+ -->
+
+{{#each messages}}
+
+    <div class="messages">
+        <div id="message-{{id}}">
+            <strong class="author-text" style="color: white; margin-right: 150px; margin-top: 20px;">{{this.sender}}</strong>
+            <span class="date-posted" style="color: white; margin-left: 220px;">{{this.created}}</span>
+            <div class="message-text" style="color: white; font-size: larger; margin-top: 5px;">{{this.message}}</div>
+        </div>
+    </div>
+
+{{/each}}

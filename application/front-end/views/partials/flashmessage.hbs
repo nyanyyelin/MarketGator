@@ -1,0 +1,28 @@
+<div id="flash-message" >
+
+{{#if messages.error}}
+<div class="fmessage" id="fmessage">{{messages.error}}</div>
+{{else}}
+    {{#if messages.success}}
+    <div class="smessage" id="smessage">{{messages.success}}</div>
+    {{/if}}
+{{/if}}
+</div>
+
+<script>
+var fmessage = document.getElementById('flash-message');
+
+setTimeout(() => {
+        let currentOpacity = 1.0;
+        let timer = setInterval(() => {
+            if(currentOpacity < 0.05){
+                clearInterval(timer);
+                fmessage.remove();
+            }
+            currentOpacity = currentOpacity - 0.05;
+            fmessage.style.opacity = currentOpacity;
+            
+        }, 50)
+    },4000);
+setTimeout();
+</script>

@@ -1,0 +1,12 @@
+.convo {
+
+    display: flex;
+    flex-direction: row;
+    background: rgb(253,210,80);
+    background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+    border-radius: 15px;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}

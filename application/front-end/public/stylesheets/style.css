@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif; 
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+/* Main body */
+body{
+    background-color: rgb(252, 252, 252);
+}
+
+#main-body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: black;
+}
+
+/* DIV CONTAINERS */
+.item-card{
+  padding: 5px;
+}
+
+.child {
+  float: left;
+}
+
+/* overflow */
+.parent.overflow {
+  overflow: hidden; /* or auto */
+}
+
+/* micro clearfix */
+.parent.clearfix:before,
+.parent.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.parent.clearfix:after {
+  clear: both;
+}
+
+/* extra markup */
+.dirty-clearfix {
+  clear: both;
+}
+
+/* pretty it up! */
+
+section {
+  clear: both;
+  border: 1px solid #999;
+  margin: 1em 0;
+  padding: 0 1em;
+}
+
+.parent {
+  background: orange;
+  padding: 0 1em;
+  margin: 1em 0;
+}
+
+.child {
+  background: #CCC;
+}
+

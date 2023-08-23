@@ -1,0 +1,150 @@
+#listing-image {
+
+    display: block;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 22%;
+    height: 22%;
+    border-radius: 15px;
+}
+
+.view-listing-container{
+    text-align: center;
+    margin-top: 25px;
+    color: white;
+    font-size: medium;
+
+}
+
+#seller-div{
+    background: rgb(253,210,80);
+    background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+    color: white;
+    text-align: center;
+    list-style-type: none;
+    margin-top: 1em;
+    margin-left: 25em;
+    margin-right: 25em;
+    padding: 8px;
+    overflow: hidden;
+    background-color: bisque;
+}
+
+#item-info {
+
+    background: rgb(253,210,80);
+    background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+    list-style-type: none;
+    margin-top: 1em;
+    margin-left: 25em;
+    margin-right: 25em;
+    padding: 4px;
+    overflow: hidden;
+    background-color: bisque;
+    border-radius: 20px; 
+
+}
+
+
+#message {
+    width: 80%;
+    text-align: center;
+    border-radius: 20px; 
+    border: none;
+}
+
+#message-div {
+    background: rgb(253,210,80);
+    background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+    list-style-type: none;
+    margin-top: 1em;
+    width: 725px;
+    padding: 4px;
+    overflow: hidden;
+    border-radius: 20px; 
+
+}
+
+#msg-label{
+    margin-left: 30px;
+}
+
+#send-button{
+
+    text-align: center;
+    background-color: #5fe7b3;
+    border-color: white;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+}
+
+@media screen and (max-width: 900px){
+
+    #seller-div{
+        background: rgb(253,210,80);
+        background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+        color: white;
+        text-align: center;
+        list-style-type: none;
+        margin-top: 1em;
+        margin-left: 12em;
+        margin-right: 12em;
+        padding: 8px;
+        overflow: hidden;
+        background-color: bisque;
+    }
+
+    #item-info {
+
+        background: rgb(253,210,80);
+        background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+        list-style-type: none;
+        margin-top: 1em;
+        margin-left: 12em;
+        margin-right: 12em;
+        padding: 4px;
+        overflow: hidden;
+        background-color: bisque;
+        border-radius: 20px; 
+    
+    }
+    @media screen and (max-width: 450px){
+        #item-info {
+
+            background: rgb(253,210,80);
+            background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+            list-style-type: none;
+            margin-top: 1em;
+            margin-left: 6em;
+            margin-right: 6em;
+            padding: 4px;
+            overflow: hidden;
+            background-color: bisque;
+            border-radius: 20px; 
+        
+        }
+
+        #seller-div{
+            background: rgb(253,210,80);
+            background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+            color: white;
+            text-align: center;
+            list-style-type: none;
+            margin-top: 1em;
+            margin-left: 6em;
+            margin-right: 6em;
+            padding: 8px;
+            overflow: hidden;
+            background-color: bisque;
+        }
+
+    }
+
+}

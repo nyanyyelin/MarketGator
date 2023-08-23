@@ -1,0 +1,12 @@
+{{#each items}}
+    
+            <a style="cursor: pointer" id="card-link" onclick="window.location.href='/messages/searchpostbyconversation?sender={{displayName}}&me={{me}}&idpost={{id}}'">
+                <li id="card">
+                    <div class="convo">
+                    <center><img src="/public{{path}}" id="pic" style="border-radius: 20px; margin: 7px;" height="60" width="60"></center>
+                    <p style="margin-left: 10px; overflow: hidden;">{{displayName}}</p>
+                    </div>
+                </li>
+            </a>
+        
+{{/each}}

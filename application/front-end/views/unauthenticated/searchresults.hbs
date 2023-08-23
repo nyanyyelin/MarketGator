@@ -1,0 +1,20 @@
+<!--
+    Author: Ethan Lunderville, Patrick Celedio 
+    Purpose: Provide as a UI for search results
+ -->
+<div> 
+    <p>{{title}}</p>
+</div>
+
+<div id="test-page">
+    <h1>Search Results</h1>
+    <!-- 
+        @Patrick Celedio
+        Returns number of amount of items returned from DB
+    -->
+    <p>Returning {{ total }} items from inventory. </p>
+    <div id="proof-grid">
+    {{> results}}
+    </div>
+</div>
+

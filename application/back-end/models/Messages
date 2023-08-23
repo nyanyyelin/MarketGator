@@ -1,0 +1,84 @@
+/*
+  Author: Michael Feger
+  Purpose: Model that performs search function and returns list of objects given the search criteria
+  Can also return a single listing upon clicking a listing from search results.
+*/
+
+var db = require('../database.js');
+const MessageModel = {};
+
+// MessageModel.create = (message, sender, reciever ) => {
+MessageModel.create = (message, sender, reciever, listing_idlisting ) => {
+    console.log("This runs");
+    let baseSQL = `INSERT INTO message (idmessage, message, created, sender, reciever, listing_idlisting) VALUES (NULL,?,now(),?,?,?);`;
+    return db.query(baseSQL, [message, sender, reciever, listing_idlisting])
+    .then(([results, fields]) => {
+        console.log("This runs");
+        console.log(results);
+        if(results && results.affectedRows){
+            return Promise.resolve(results.insertId);
+        }else{
+            return Promise.resolve(-1);
+        }
+    })
+    .catch((err) => Promise.reject(err));
+}
+
+/*MessageModel.getUserMessages = (reciever) => {
+    console.log(reciever)
+    let baseSQL = `SELECT * FROM message
+    WHERE reciever=`+reciever+``;
+
+    return db.query(baseSQL, [reciever])
+    .then(([results, fields]) => {
+        return Promise.resolve(results);
+    }).catch((err) => Promise.reject(err));
+
+}*/
+
+MessageModel.getUserMessages = (sender, reciever ,postId) => {
+
+    let baseSQL = `
+    SELECT listing_idlisting, message, sender, created FROM message WHERE message.sender = ? AND message.reciever = ? AND listing_idlisting = ?
+    UNION
+    SELECT listing_idlisting, message, sender, created FROM message WHERE message.reciever = ? AND message.sender = ? AND listing_idlisting = ?
+    ORDER BY created ASC;`;
+    return db.query(baseSQL, [sender, reciever, postId, sender, reciever, postId])
+    .then(([results, fields]) => {
+        return Promise.resolve(results);
+    }).catch((err) => Promise.reject(err));
+
+}
+
+MessageModel.getConversation = (user, sender, postId) => {
+
+    let baseSQL = `SELECT * FROM message WHERE 
+                    (message.sender = ? AND message.reciever = ?
+                    AND listing_idlisting= ?)
+                    UNION ALL
+                    SELECT * FROM message WHERE 
+                    (message.sender = ? AND message.reciever = ?
+                    AND listing_idlisting = ?);`;
+    return db.query(baseSQL, [user, sender, postId, sender, user, postId])
+    .then(([results, fields]) => {
+        return Promise.resolve(results);
+    }).catch((err) => Promise.reject(err));
+
+}
+
+MessageModel.getUserMessageCardsForInbox = (user) => {
+
+    let baseSQL = ` 
+    SELECT listing_idlisting, photopath as thumbnail, sender, reciever, CONCAT(sender, reciever, listing_idlisting) 
+    FROM message 
+    JOIN listing ON message.listing_idlisting = listing.idlisting
+    WHERE reciever = ? OR sender = ? AND sender <> reciever
+    GROUP BY CONCAT(sender, reciever, listing_idlisting);`;
+    return db.query(baseSQL, [user, user])
+    .then(([results, fields]) => {
+        return Promise.resolve(results);
+    }).catch((err) => Promise.reject(err));
+
+}
+
+module.exports = MessageModel;

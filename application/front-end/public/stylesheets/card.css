@@ -1,0 +1,36 @@
+:root {
+    --yell :  #ffd002;
+  }
+
+#card {
+align-items: center;
+align-content: center;
+justify-content: center;
+color: white;
+
+}
+
+.box {
+    background: rgb(253,210,80);
+    background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+    margin-bottom: 20px;
+    width: 210px;
+    height: 300px;
+    border-radius: 10px;
+    border-width: 0px;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 6fr 2fr 2fr 2fr;
+    overflow: hidden;
+
+}
+
+#pic {
+
+overflow: hidden;
+
+
+}

@@ -1,0 +1,36 @@
+.flash {
+  text-align: center;
+  font-size: larger;
+}
+
+#smessage {
+  padding: 20px;
+  background-color: #5de850c0; /* Red */
+  color: white;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+#chatmessage {
+  padding: 20px;
+  background-color: #49f287c0; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  width: 70%;
+  margin: auto;
+}
+
+
+#fmessage {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+#fmessage.fade {
+  opacity: 0;
+}

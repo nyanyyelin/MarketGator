@@ -1,0 +1,22 @@
+class ListingError extends Error {
+    constructor(message, redirectURL, status){
+        super(message);
+        this.redirectURL = redirectURL;
+        this.status = status;
+    }
+
+getMessage() {
+    return this.messsage
+}
+
+getRedirectURL() {
+    return this.redirectURL; //changed
+}
+
+getStatus() {
+    return this.status;
+}
+
+}
+
+module.exports = ListingError;

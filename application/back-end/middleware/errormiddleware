@@ -1,0 +1,18 @@
+
+
+const printers = {
+    errorPrint: (message) => {
+        console.log(message);
+    },
+
+    successPrint: (message) => {
+        console.log(message);
+    },
+
+    requestPrint: (message) => {
+        console.log(message);
+    }
+}
+//catch error?
+
+module.exports = printers;

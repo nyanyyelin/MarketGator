@@ -1,0 +1,124 @@
+<!--
+    Author: Patrick Celedio, Ahmad Adnan 
+    Purpose: Provide UI for user registration
+ -->
+
+{{!--
+
+<head>
+    <script defer src="/public/helpers/registration.js"></script>
+</head> --}}
+
+<div class="site-content">
+    <center>
+        <div class="formwrapper">
+            <div class="site-content">
+                <h1 id="registerlabel">Register</h1>
+                <p id="directions">In order to create an account, please enter a desired username, your email, and a
+                    personal password.</p>
+
+                <!--
+                <h1 id="register" class="site-content">Register</h1>
+            -->
+                <div id="register">
+                    <form id="register_form" method="POST" action="/Users/register"
+                        enctype="application/x-www-form-urlencoded">
+                        <div class="Email">
+                            <input required name="email" type="text" placeholder="SFSU Email Address">
+                        </div>
+
+                        <br>
+
+                        <div class="Password">
+                            <!--
+                        <label>Password:</label><br>
+                    -->
+                            <input type="password" id="password" placeholder="password" name="password">
+                            <small>Error Message</small>
+                        </div>
+
+                        <div class="Re_Password">
+                            <!-- 
+                        <label>Please confirm your password:</label><br>
+                    -->
+                            <input type="password" id="password2" placeholder="re-enter password" name="cpassword">
+                            <small>Error Message</small>
+                        </div>
+
+                        <div>
+                            <h3>Password Requirements</h3>
+                            <ul>
+                                <li class="capital-check">At least one capital letter</li>
+                                <li class="special-check">At least one special character (!, @, #, $, ...)</li>
+                                <li class="length-check">At least 8 characters in length</li>
+                                <li class="confirm-check">Passwords match</li>
+
+                            </ul>
+                        </div>
+                        <br><br>
+
+                        <div class="TOC">
+                            <div class="toc-rules">
+                                <label id="toswarning">
+                                    <div>Terms of Service and Privacy Rules</b></div>
+                                    <div>By checking this box, you agree to
+                                        <a class="tos-link" href="/termsconditions" target="_blank"
+                                            rel="noopener noreferrer"><b>MarketGator's Terms & Conditions</b></a> before
+                                        using this site.
+                                    </div>
+                                </label>
+
+                                <input type="checkbox" id="acceptTOS" name="TOS" value="true" required>
+                            </div>
+                            <div class="Register">
+                                {{!-- <button id="registerbutton" type="submit"
+                                    onclick="document.getElementById('register_form').submit();">Register</button> --}}
+
+                                {{!-- Implement gtag function to send an event to Google Analytics --}}
+                                <input type="submit" value="Submit"
+                                    onclick="gtag('event', 'click', {'event_category': 'registration', 'event_label': 'click_button'});">
+                            </div>
+
+
+                            <div>
+                                <a href="/login" style="color: white;">Or click here to login if you already have an
+                                    account</a>
+                            </div>
+
+
+                        </div>
+                        <div>
+                            <small>Error Message</small>
+                        </div>
+                </div>
+                </form>
+            </div>
+    </center>
+</div>
+</div>
+
+<script>
+    function updatePasswordRequirements() {
+    // Get the password
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("password2").value;
+
+
+    // Check if the password meets the requirements
+    var hasCapital = /[A-Z]/.test(password);
+    var hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+    var hasLength = password.length >= 8;
+    var doPasswordsMatch = password === confirmPassword;
+        
+
+    // Update the li elements' styles based on the password requirements
+    document.querySelector(".capital-check").style.color = hasCapital ? "green" : "red";
+    document.querySelector(".special-check").style.color = hasSpecial ? "green" : "red";
+    document.querySelector(".length-check").style.color = hasLength ? "green" : "red";
+    document.querySelector(".confirm-check").style.color = doPasswordsMatch ? "green" : "red";
+    }
+
+    // Call the updatePasswordRequirements function whenever the password and confirm password input changes
+    document.getElementById("password").addEventListener("input", updatePasswordRequirements);
+    document.getElementById("password2").addEventListener("input", updatePasswordRequirements);
+</script>

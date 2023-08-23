@@ -1,0 +1,34 @@
+
+
+.container {
+    background: #FFD500;
+}
+
+#test-page{
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.card:hover { 
+    /* Using -webkit- prefix to ensure that it works in chrome */
+    -webkit-transform: scale(1.1); 
+    transform: scale(1.1); 
+}
+
+#proof-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+@media only screen and (max-width: 800px) {
+    #proof-grid{
+        display: flex;
+        flex-direction: column;
+    };
+}; 
+

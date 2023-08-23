@@ -1,0 +1,42 @@
+#test-page{
+    margin-top: 50px;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.card:hover { 
+    transform: scale(1.05); 
+}
+
+#proof-grid{
+    display: grid;
+    
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    row-gap: 20px
+}
+
+@media only screen and (max-width: 1150px) {
+
+    #proof-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-content: center;
+        justify-items: center;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        row-gap: 20px
+    }
+    @media only screen and (max-width: 800px) { 
+        #proof-grid{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        };
+    };
+}; 
+

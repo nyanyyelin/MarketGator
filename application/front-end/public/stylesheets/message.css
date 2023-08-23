@@ -1,0 +1,119 @@
+.comment-text {
+    font-size: 20px;
+    color: whitesmoke;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 75px;
+    min-height: 75px;
+}
+
+#msg-container {
+    position: absolute; 
+    left: -200px; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 100px;
+    top: 600px;
+}
+
+
+#message-flex {
+    
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    max-height: 430px;
+}
+
+.messages {
+    background: rgb(253,210,80);
+    background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+    list-style-type: none;
+    margin-top: 1em;
+    padding: 4px;
+    overflow: hidden;
+    border-radius: 20px; 
+    width: 800px;
+    overflow-x: overlay;
+    height: 60px;
+}
+
+#message {
+
+    color: white;
+    height: 40px;
+
+}
+
+.author-text {
+    grid-area: author;
+    justify-self: start;
+    color: white;
+
+}
+
+.date-posted {
+    grid-area: created;
+    justify-self: end;
+    color: silver
+}
+
+div[id^=messsage-] {
+    display: grid; 
+    grid-template-rows: .3fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: .2em;
+    padding: .25rem;
+    margin: .2rem;
+    font-size: 1rem;
+    color: white;
+    border: .0625rem solid white;
+    border-radius: .25rem;
+    grid-template-areas: 
+    "author created"
+    "comment comment";
+}
+
+@media screen and (max-width: 1200px){
+#msg-container {
+    position: absolute; 
+    left: -200px; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 100px;
+    top: 680px;
+    max-width: 50px;
+}
+
+#message-div {
+    background: rgb(253,210,80);
+    background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+    list-style-type: none;
+    margin-top: 1em;
+    width: 450px;
+    padding: 4px;
+    overflow: hidden;
+    border-radius: 20px; 
+
+}
+
+@media screen and (max-width: 900px){
+    .messages {
+        background: rgb(253,210,80);
+        background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+        list-style-type: none;
+        margin-top: 1em;
+        padding: 4px;
+        overflow: hidden;
+        border-radius: 20px; 
+        width: 400px;
+        overflow-x: overlay;
+        height: 80px;
+    }
+
+    
+}
+}
+

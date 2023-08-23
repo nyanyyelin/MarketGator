@@ -1,0 +1,90 @@
+<!--
+    Author: Patrick Celedio
+    Purpose: Default UI for all pages rendered by handlebars
+ -->
+ 
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Google tag (gtag.js) 
+        Stream Name: MarketGator
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-154HFQP5NW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-154HFQP5NW');
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/favicon.ico" sizes="70x70" type="image/ico">
+    <title>{{{title}}}</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+    </style>
+
+    <link rel='stylesheet' href='../../public/stylesheets/dashboard.css' />
+    <link rel='stylesheet' href='../../public/stylesheets/searchbar.css' />
+    <link rel='stylesheet' href='../../public/stylesheets/proof.css' />
+    <link rel='stylesheet' href='../../public/stylesheets/navbar.css' />
+    <link rel='stylesheet' href='../../public/stylesheets/footer.css' />
+    <link rel='stylesheet' href='../../public/stylesheets/login.css' />
+    <link rel='stylesheet' href='../../public/stylesheets/register.css' />
+    <link rel='stylesheet' href='../../public/stylesheets/style.css' />
+    <link rel='stylesheet' href='../../public/stylesheets/menu.css' />
+    <link rel="stylesheet" href="../../public/stylesheets/viewlisting.css">
+    <link rel="stylesheet" href="../../public/stylesheets/inbox.css">
+    <link rel="stylesheet" href="../../public/stylesheets/about.css">
+    <link rel="stylesheet" href="../../public/stylesheets/createlisting.css">
+    <link rel="stylesheet" href="../../public/stylesheets/flash.css">
+    <link rel="stylesheet" href="../../public/stylesheets/card.css">
+    <link rel="stylesheet" href="../../public/stylesheets/convo.css">
+    <link rel="stylesheet" href="../../public/stylesheets/message.css">
+
+  </head>
+  <body name="mainbody">
+   
+    {{> navbar}}
+    <div name="flashfrontend"></div>
+     <div id="bottom">
+      {{> flashmessage}}
+      {{{body}}}
+    {{> footer}}
+    </div>
+    
+    
+
+{{#if logged}}
+
+      <script>
+        
+
+        let ele = document.getElementById('logout-button');
+            ele.onclick = (event) =>{
+                console.log('logout clicked');
+                fetch('/users/logout',{
+                  method: 'POST'
+                })
+                .then((data) => {
+                  location.replace('/');
+                } )
+
+            }
+
+            listener = function(event) {
+                console.log('logout clicked');
+                fetch('/users/logout',{
+                  method: 'POST'
+                })
+                .then((data) => {
+                  location.replace('/');
+                } )
+            }
+      </script>
+    {{/if}}
+
+  </body>
+</html>

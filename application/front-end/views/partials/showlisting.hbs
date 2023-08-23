@@ -1,0 +1,24 @@
+<div class="view-listing-container">
+    <!--
+        @Patrick Celedio
+        Show email of listing owner
+    -->
+    <h1 value="{{currentListing.idlisting}}">{{currentListing.title}}</h1>
+    <img id="listing-image" src="/public/{{currentListing.photopath}}" >
+    
+    <div id="seller-div">
+
+        <nav>
+            <span>Seller Name: </span>
+            <a id = "reciever" class="seller-info-c" href="" style="color: white;">{{currentListing.poster}} </a>
+        </nav>
+
+    </div>
+
+    <div id="item-info">
+        <center>Item Details</center>
+        <ul id="item-ul">
+            <li>Item Description: {{currentListing.description}} </li>
+        </ul>
+    </div>
+

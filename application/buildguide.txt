@@ -1,0 +1,13 @@
+1. npm install
+2. npm audit fix --force
+3. repeat step three until you have zero vulerabilities
+4. if you have a Mac OS 
+        type this into the command line to automate database creation: bash auto.sh 
+   else
+        go to the dbloader function in bin/dbloader.js and change the username and password so that it can connect to your sql instance
+        go the the db function in database.js and and change the username and password so that it can connect to your sql instance
+        run this command: node bin/dbloader.js
+        
+5. npm start
+
+//NOTE: your server should now be running on localhost:3000

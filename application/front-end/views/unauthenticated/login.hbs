@@ -1,0 +1,58 @@
+<!--
+    Author: 
+    Purpose: 
+ -->
+<div class="site-content">
+    <aside class="site-lsidebar">
+        <!-- Sidebar content goes here! -->
+    </aside>
+
+    <aside class="site-rsidebar">
+        <!-- Sidebar content goes here! -->
+    </aside>
+    <center>
+    <div class="formwrapper">
+        <div class="site-content">
+            <h1 id="loginlabel">Login</h1>
+            <p id="welc">Welcome to MarketGator, please enter your SFSU email and password to log in.</p>
+
+            <form id="login_form" method="POST" action="/Users/login" enctype="application/x-www-form-urlencoded">
+                <div class="field_container">
+                    <center><input required name="email" type="text" placeholder="Email Address"></center>
+                </div>
+
+                <div class="field_container">
+                    <center><input required name="password" type="Password" placeholder="Password"></center>
+                </div>
+
+                    <!-- 
+                        @Patrick Celedio
+                        Sign in is hardcoded to reach dashboard
+                        Will eventually implement    
+                    <button type="Submit" id="sign_in_button" onclick="window.location.href='/dashboard'">
+                        <span class="button_text"> Sign In </span>
+                    </button>
+                    -->
+
+                </form>
+        </div>
+
+        <div class="button"> 
+            <button id="forgotbutton" type="submit" onclick="document.getElementById('forgot_password').submit();">Forgot Password</button> 
+            <button id="loginbutton"  type="submit" onclick="document.getElementById('login_form').submit();">Login!</button> 
+        </div>
+
+        <footer class="site-footer" id="loginfooter">
+            <nav>
+                <div>
+                    <a id="loginfootertext" class="login-register" href="/registration">
+                        Or click here to register 
+                        an account if you have not
+                        done so already!
+                    </a>
+                </div>
+            </nav>
+        </footer>
+    </div>
+    </center>
+</div>

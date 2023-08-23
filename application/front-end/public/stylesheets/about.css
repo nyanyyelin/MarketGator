@@ -1,0 +1,19 @@
+/*
+  Author: Rohit Devdhar
+  Purpose: To give the "About Us" page a cleaner UI,
+  and to keep the same format for individual pages
+*/
+
+#grid-container {
+
+  align-content: center;
+  align-items: center;
+
+}
+
+#about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+}
+

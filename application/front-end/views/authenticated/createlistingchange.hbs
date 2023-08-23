@@ -1,0 +1,81 @@
+<!--
+    Author: Nyan Ye Lin
+    Purpose: For Creating Listing
+ -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Create Listing</title>
+</head>
+    <body class="p-3 m-0 border-0">
+
+        <div class="create-listing-containter">
+            
+            <br>
+            <center>Create New Listing</center>
+
+            <form class="form-horizontal" id="create-form" method="POST" enctype="multipart/form-data" action='/Listing/createPost'>
+                <fieldset>
+                <div class="mb-3" id="">
+                    <br>
+                    <label>Upload Photo Here</label>
+                    <br>
+                    <input class="uploadedfile" type="file" id="file" name="uploadImage">
+                </div>
+
+
+                <div class="form-group">
+                    <label class="form-label">Title</label>
+                    <br>
+                    <input type="text" class="form-control"  id="title" placeholder="Enter Title Here..." name="title">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Price</label>
+                    <br>
+                    <input type="number" class="form-control"  id="price" placeholder="Enter Price Here..." name="price">
+                </div>
+
+                <br>
+
+                <div>
+                    <label>Category</label>
+                    <br>
+                        <select id="category" name="category">
+                        <option value="Metal">Metal</option>
+                        <option value="Decor">Decor</option>
+                        <option value="Kitchen">Kitchen</option>
+                        <option value="Cups">Cups</option>
+                        <option value="test">test</option>
+                    </select>
+                </div>
+
+                <br>
+
+                <br>
+            
+                <div class="mb-3">
+                    <label class="form-label">Item Description</label>
+                    <br>
+                    <textarea class="form-control" id="item-description" rows="5" spellcheck="true" style="height: 103px;" name="description"></textarea>
+                </div>
+
+                <p>Please wait 1 - 3 days for the listing to be verified.</p>
+
+                
+                <button type="Submit">Submit Image</button>
+                </fieldset>
+
+
+            </form>
+
+        </div>
+
+
+    </body>
+</html>

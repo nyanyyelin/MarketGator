@@ -1,0 +1,23 @@
+<!--
+    Author: Patrick Celedio
+    Purpose: Search bar component UI
+ -->
+
+<!-- Search Bar -->
+<form action="/searchGET">
+    <!-- Category dropdown. -->
+    <div class="search-wrapper">
+        <select name="category" class="category-dropdown">
+            <option value="">All</option>
+            <option value="Books">Books</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Art">Art</option>
+            <option value="Movies">Movies</option>
+        </select>
+
+        <div class="input-wrapper">
+            <input name="search" type="search" class="search-bar"  placeholder="Search MarketGator...">
+            <input type="submit" value="Search" class="search-btn" onchange="this.form.submit()">
+        </div>
+    </div>
+</form>

@@ -1,0 +1,81 @@
+<center>
+<div>   {{#if logged}}
+            <div id="message-div">
+                <textarea style="color: black;" type="text" id ="message" class="form-control" placeholder="Send A Message."></textarea>
+                <button style="cursor: pointer" id="send-button" onclick="sendMessage({{currentListing.idlisting}})" class="form-control">Send</button>
+            </div>
+        {{else}}
+            <div id="item-info">
+                <center>Login or Register to message user for this item</center>
+            </div>
+        {{/if}}
+        <br>
+</div>  
+</center>  
+
+<script>
+    function addFlashFromFrontEnd(message){
+    let flashMessageDiv = document.createElement('div');
+    let innerFlashDiv = document.createElement('div');
+    let innerTextNode = document.createTextNode(message);
+    innerFlashDiv.appendChild(innerTextNode);
+    flashMessageDiv.appendChild(innerFlashDiv);
+    flashMessageDiv.setAttribute('id', 'chatmessage');
+    innerFlashDiv.setAttribute('class', 'alert alert-info');
+    document.getElementsByName('flashfrontend')[0].appendChild(flashMessageDiv);
+    setFlashMessageFadeOut(flashMessageDiv);
+    }
+    function setFlashMessageFadeOut(flashMessageElement) {
+    setTimeout(() => {
+        let currentOpacity = 1.0;
+        let timer = setInterval(() => {
+            if(currentOpacity < 0.05){
+                clearInterval(timer);
+                flashMessageElement.remove();
+            }
+            currentOpacity = currentOpacity - 0.05;
+            flashMessageElement.style.opacity = currentOpacity;
+            
+        }, 50)
+    },4000);
+}
+        function sendMessage(listingId) {
+            console.log('clicked')
+            //console.log(parent.currentListing);
+            let reciever = document.getElementById('reciever').innerHTML;
+            console.log(reciever)
+            let commentText = document.getElementById('message').value;
+            let listing_idlisting = listingId;
+            console.log(commentText);
+            let postId = document.location.pathname.match(/\d+/g).map(Number)[0];
+            console.log(postId);
+            document.getElementById("message").value='';
+            
+            if(!commentText){
+                return;
+            }
+            let fetchOptions = {
+                method:"POST",
+                headers: {
+                    "Content-Type":"Application/json"
+                },
+                body: JSON.stringify({
+                    reciever:reciever,
+                    message:commentText,
+                    listing_idlisting:listing_idlisting,
+                })
+            }
+                fetch('/Messages/create', fetchOptions)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    if(data.code == 1){
+                        addFlashFromFrontEnd("Message was sent successfully.");
+                    }else{
+                        addFlashFromFrontEnd("You must be logged in to message a user.");
+                    }
+                })
+                .catch(err => console.log(err));
+            }
+</script>
+</div>

@@ -1,0 +1,26 @@
+/*
+  Author: Michael Feger
+  Purpose: Middleware for listings that allows you to retrieve a listing by ID
+*/
+
+
+var db = require('../database.js');
+const listingMiddleware = {}
+const {getListing} = require('../models/Listings');
+
+listingMiddleware.getListingById = async function(req, res, next) {
+    try {
+        let idlisting = req.params.idlisting;
+        let results = await getListing(idlisting);
+        if(results && results.length){
+            res.locals.currentListing = results[0];
+            next();
+        }else{
+            res.redirect('/');
+        }
+    }catch (error) {
+        next(error);
+    }
+}
+
+module.exports = listingMiddleware;

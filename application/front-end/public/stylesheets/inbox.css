@@ -1,0 +1,70 @@
+.inbox-whole-page {
+    box-sizing: border-box;
+  }
+  
+  /* Create two unequal columns that floats next to each other */
+  .column {
+    float: left;
+    padding: 10px;
+  }
+  
+  .top-left {
+    width: 25%;
+    display: flex;
+    overflow-y: scroll;
+    direction: rtl;
+    max-height: 600px;
+    flex-direction: column;
+  }
+  
+  .top-right {
+    border-style: ridge;
+    width: 75%;
+  }
+
+  .bottom-left {
+    border-style: ridge;
+    width: 20%;
+  }
+  
+  .bottom-right {
+    border-style: ridge;
+    width: 75%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .divide-messages{
+    display: grid; 
+    grid-template-rows: .3fr 1fr;
+    gap: .2em;
+    padding: .25rem;
+    margin: .2rem;
+    font-size: 1rem;
+    border: .0625rem solid rgb(0, 0, 0);
+    border-radius: .25rem;
+    grid-template-areas: 
+    "author created"
+    "comment comment";  
+  }
+
+  div[id^=messsage-] {
+    display: grid; 
+    grid-template-rows: .3fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: .2em;
+    padding: .25rem;
+    margin: .2rem;
+    font-size: 1rem;
+    color: white;
+    border: .0625rem solid white;
+    border-radius: .25rem;
+    grid-template-areas: 
+    "author created"
+    "comment comment";
+}

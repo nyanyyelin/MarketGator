@@ -1,0 +1,59 @@
+/* 
+Author: Patrick Celedio, Ethan Lunderville
+Purpose: Styling of footbar
+*/
+
+:root {
+    --yell :  #ffd002;
+}
+
+#footer-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(149deg, rgba(16,16,64,1) 0%, rgba(11,4,48,1) 100%); 
+    font-size: medium;
+    position: fixed;
+    padding: 10px 10px 8px 10px;
+    bottom: 0;
+
+    /* Height of the footer*/
+    height: 20px;
+    width: 100%;
+    
+}
+
+.footer-item ul {
+    list-style: none;
+}
+
+.footer-item , .footer-item a, .footer-item li{
+    display: inline-block;
+    color: var(--yell);
+    text-decoration: none;
+}
+
+.footer-slogan {
+    padding-bottom: 5px;
+    color: var(--yell);
+}
+
+@media screen and (max-height: 600px){
+    #footer-bar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: rgb(16,16,64);
+        background: linear-gradient(149deg, rgba(16,16,64,1) 0%, rgba(11,4,48,1) 100%); 
+        position: fixed;
+        padding: 10px 10px 0px 10px;
+        bottom: 0;
+    
+    
+        /* Height of the footer*/
+        height: 10px;
+        width: 100%;
+}
+}

@@ -1,0 +1,130 @@
+#post-form {
+
+justify-content: center;
+
+}
+
+.form-item-right > * {
+
+    border-radius: 3px;
+    border: none;
+}
+
+#uploadbutton {
+
+    background-color: #5fe7b3;
+    border-color: white;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+
+}
+
+.create-listing-containter{
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    background: rgb(253,210,80);
+    background: linear-gradient(149deg, rgba(253,210,80,1) 0%, rgba(254,30,80,1) 100%);
+    max-width: 560px;
+    border-radius: 15px;
+    color: white;
+    
+}
+
+
+#pleaseallow {
+
+    color: white;
+    max-width: 80%;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+}
+
+.header{
+    padding-bottom: 20px;
+}
+
+#createnewlabel {
+
+    font-size: 35px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: white;
+
+}
+
+#createlistingbutton {
+    background-color: #5fe7b3;
+    border-color: white;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    padding: 10px;
+    margin-left: 27px;
+}
+
+.form-item input {
+    max-width: 110%;
+}
+
+.form-item 
+
+.form-item-left {
+    display: flex;
+    flex: 1;
+    max-width: 50%;
+    font-size: large;
+}
+
+.form-item-right {
+    display: flex;
+    flex: 1;
+    max-width: 50%;
+}
+.Category{
+    padding-bottom: 10px;
+}
+
+.item_condition{
+    padding-bottom: 10px;
+}
+
+.item_description{
+    padding-bottom: 10px;  
+    display: flex;
+    align-items: center;
+}
+
+.upload_photo{
+    padding-bottom: 10px;
+    direction:initial;
+}
+
+.submit{
+    text-align: center;
+}
+
+
+

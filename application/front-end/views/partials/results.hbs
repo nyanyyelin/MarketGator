@@ -1,0 +1,21 @@
+<!--
+    Author: 
+    Purpose: 
+ -->
+
+
+    {{#each items}}
+        <div class="card" class="item-card">
+            <a id="card-link" href="/listing/{{idlisting}}">
+                <li id="card">
+                    <div class="box">
+                        
+                    <center><img src="/public{{thumbnail}}" id="pic" style="border-radius: 20px; margin-top: 28px;" height="150" width="150"></center>
+                    <h2>{{title}}</h2>
+                    <p>{{description}}</p>
+                    </div>
+                </li>
+            </a>
+        </div>
+    {{/each}}
+
