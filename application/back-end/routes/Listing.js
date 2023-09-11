@@ -174,10 +174,6 @@ router.get('/searchbyname', (request, response) => {
     // Print JSON string
     console.log(object);
 
-    /*
-    @ Patrick Celedio
-    Container to store the number of items returned from DB
-    */
     let tokens = [];
     tokens = object.split("idlisting");
     
