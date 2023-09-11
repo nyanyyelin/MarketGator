@@ -1,5 +1,4 @@
 /*
-  Author: Ethan Lunderville, Patrick Celedio
   Purpose: Index.js handles routing for rending provided pages 
 */
 
