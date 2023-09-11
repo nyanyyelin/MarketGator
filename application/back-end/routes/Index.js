@@ -53,10 +53,7 @@ router.get('/dashboard', (request, response) => {
 
 // Get inbox page
 router.get('/inbox', (request, response) => {
-    /*
-    @Patrick Celedio
-    If a local session exist, return the username
-  */
+
     if (response.locals.logged == true){
       console.log("Inbox accessed. " + request.session.username + " is logged.");
       
