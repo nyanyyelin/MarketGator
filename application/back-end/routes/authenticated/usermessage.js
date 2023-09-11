@@ -1,5 +1,4 @@
 /*
-  Author: Patrick Celedio
   Purpose: Handles the routing of anything related to usermessage UI
 */
 
