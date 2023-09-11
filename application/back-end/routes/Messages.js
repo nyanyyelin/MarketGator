@@ -92,59 +92,6 @@ router.get('/conversationGET', getConversationbyId, (request, response, next) =>
 
 });
 
-/*
-// @Patrick Celedio
-// Old code, keeping for in case for rollback
-
-// router.post('/create', (req, res, next) => {
-//     /*if(!req.session.username){
-//         res.json({
-//             code: -1,
-//             status:"danger", 
-//             message:"Must be logged in to create a comment"
-//         });
-//     }else{*/
-        
-//         /*
-//             @Patrick Celedio
-//             For now we will comment out sender and reciever,
-//             in order to get barebones messaging created
-//         */
-//         // let {sender, reciever, message} = req.body;
-//         let {message} = req.body;
-//         console.log("Checking req.body");
-//         let sender = req.session.username;
-//         console.log(req.body);
-    
-//         /*
-//             @Patrick Celedio
-//             For now we will comment out sender and reciever,
-//             in order to get barebones messaging created
-//         */
-//         create(message, sender, reciever)
-//         .then((wasSuccessful) => {
-//             if(wasSuccessful != -1){
-//                 successPrint(`comment was created for ${sender}`);
-//                 successPrint(`Message captured ${message}`);
-//                 res.json({
-//                    code: 1,
-//                    status: "success",
-//                    message:"message created",
-//                    message: message,
-//                    sender: request.session.username,
-//                    reciever: reciever,
-//                 })
-//             }else{
-//                 errorPrint('message was not saved')
-//                 res.json({
-//                     code: -1,
-//                     status:"danger",
-//                     message:"message was not created"
-//                 })
-//             }
-//         }).catch((err) => next(err));
-//     }
-// )
 
 
 router.get('/searchpostbyconversation', (request, response) => {
