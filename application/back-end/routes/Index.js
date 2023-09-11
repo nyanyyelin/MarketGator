@@ -11,7 +11,6 @@ const { searchValidator } = require('../middleware/validation');
 
 
 // Get index page
-// Author: Patrick Celedio
 // Purpose: Return newest listings when clicking homepage
 router.get('/', (request, response) => {
   ListingModel.search(request, response).then((items)=>{
