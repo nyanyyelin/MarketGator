@@ -13,20 +13,7 @@ const { getUserMessages } = require('../models/Messages');
 
 
 router.post('/create', (req, res, next) => {
-    /*if(!req.session.username){
-        res.json({
-            code: -1,
-            status:"danger", 
-            message:"Must be logged in to create a comment"
-        });
-    }else{*/
-        
-        /*
-            @Patrick Celedio
-            For now we will comment out sender and reciever,
-            in order to get barebones messaging created
-        */
-        // let {sender, reciever, message} = req.body;
+
         let {message} = (req.body);
     
         console.log("Checking req.body");
