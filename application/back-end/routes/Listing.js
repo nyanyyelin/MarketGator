@@ -1,5 +1,4 @@
 /*
-  Author: Michael Feger
   Purpose: Contains routes relating to listings
 */
 
