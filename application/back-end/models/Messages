@@ -1,5 +1,4 @@
 /*
-  Author: Michael Feger
   Purpose: Model that performs search function and returns list of objects given the search criteria
   Can also return a single listing upon clicking a listing from search results.
 */
