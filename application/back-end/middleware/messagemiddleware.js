@@ -1,5 +1,4 @@
 /*
-  Author: Michael Feger
   Purpose: Middleware for messages that allows you to retrieve a message by ID
 */
 
